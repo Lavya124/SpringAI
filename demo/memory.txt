@@ -1,0 +1,8 @@
+
+User: Hi , I am lavya
+Bot: Hi Lavya! It's nice to meet you.
+
+How can I help you today?
+
+User: what is my name?
+Bot: Your name is Lavya.
