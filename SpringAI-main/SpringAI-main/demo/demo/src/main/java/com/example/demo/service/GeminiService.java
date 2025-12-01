@@ -299,6 +299,26 @@ private final Map<String, Map<String, String>> memoryStore = new HashMap<>();
                 return;
             }
 
+            String cleaned = memoryJsonString.trim();
+
+            // Remove markdown ```json ... ```
+            if (cleaned.startsWith("```")) {
+                cleaned = cleaned.replace("```json", "")
+                                 .replace("```", "")
+                                 .trim();
+            }
+    
+            // Remove text before or after JSON
+            int jsonStart = cleaned.indexOf("{");
+            int jsonEnd = cleaned.lastIndexOf("}");
+    
+            if (jsonStart == -1 || jsonEnd == -1) {
+                System.out.println("❌ No JSON found in extracted memory: " + cleaned);
+                return;
+            }
+
+            cleaned = cleaned.substring(jsonStart, jsonEnd + 1).trim();
+
             JsonNode node = mapper.readTree(memoryJsonString);
 
             // Expecting either {} or {"name":"Lavya","profession":"backend developer", ...}
@@ -325,11 +345,14 @@ private final Map<String, Map<String, String>> memoryStore = new HashMap<>();
     private String extractMemoryUsingGemini(String message) {
 
         String extractionPrompt =
-                "From this user message, extract ONLY important personal information " +
-                        "that would help personalize future responses.\n" +
-                        "Return your answer STRICTLY as JSON.\n" +
-                        "If nothing important, return {}.\n\n" +
-                        "Message: \"" + message + "\"";
+        "You are a memory extraction assistant.\n" +
+        "Your job is to extract personal details from the user message.\n\n" +
+
+        "Return ONLY a JSON object. No explanation. No extra text. No markdown.\n" +
+        "The JSON must contain: name, age, location, profession, skills, preferences, or other personal details.\n" +
+        "If NO personal information is found, return {}.\n\n" +
+
+        "Message: \"" + message + "\"";
 
         Map<String, Object> requestBody = Map.of(
                 "contents", List.of(
@@ -377,3 +400,4 @@ private final Map<String, Map<String, String>> memoryStore = new HashMap<>();
         }
     }
 }
+
