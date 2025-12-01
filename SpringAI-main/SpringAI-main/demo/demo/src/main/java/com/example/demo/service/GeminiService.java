@@ -158,17 +158,17 @@ private final Map<String, Map<String, String>> memoryStore = new HashMap<>();
     //per user  has many chat id's
 //    public String askGemini(String userId, String chatId, String message) {
 //
-//        // 1️⃣ Get memory map for this user
+//        //  Get memory map for this user
 //        Map<String, String> userChats =
 //                memoryStore.computeIfAbsent(userId, k -> new HashMap<>());
 //
-//        // 2️⃣ Get memory for this chatId
+//        // Get memory for this chatId
 //        String memory = userChats.getOrDefault(chatId, "");
 //
-//        // 3️⃣ Build combined prompt
+//        // Build combined prompt
 //        String combinedPrompt = memory + "\nUser: " + message;
 //
-//        // 4️⃣ Make Gemini request
+//        // Make Gemini request
 //        Map<String, Object> requestBody = Map.of(
 //                "contents", List.of(
 //                        Map.of(
@@ -188,7 +188,7 @@ private final Map<String, Map<String, String>> memoryStore = new HashMap<>();
 //
 //        String botReply = extractText(jsonResponse);
 //
-//        // 5️⃣ Update memory
+//        // Update memory
 //        String newMemory = combinedPrompt + "\nBot: " + botReply + "\n";
 //        userChats.put(chatId, newMemory);
 //
@@ -313,7 +313,7 @@ private final Map<String, Map<String, String>> memoryStore = new HashMap<>();
             int jsonEnd = cleaned.lastIndexOf("}");
     
             if (jsonStart == -1 || jsonEnd == -1) {
-                System.out.println("❌ No JSON found in extracted memory: " + cleaned);
+                System.out.println("No JSON found in extracted memory: " + cleaned);
                 return;
             }
 
@@ -400,4 +400,5 @@ private final Map<String, Map<String, String>> memoryStore = new HashMap<>();
         }
     }
 }
+
 
