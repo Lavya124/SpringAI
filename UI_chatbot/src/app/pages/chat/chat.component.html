@@ -1,0 +1,19 @@
+<div class="layout-container">
+
+  <div class="sidebar">
+    <app-sidebar 
+      (chatSelected)="onChatSelected($event)" 
+      (newChatCreated)="onNewChat($event)">
+    </app-sidebar>
+  </div>
+
+  <div class="chat-area">
+    <app-chat-window [messages]="messages"></app-chat-window>
+    <app-message-input (sendMessage)="onSend($event)"></app-message-input>
+  </div>
+
+  <div class="profile">
+    <app-profile-panel [profile]="profile"></app-profile-panel>
+  </div>
+
+</div>

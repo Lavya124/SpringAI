@@ -1,0 +1,12 @@
+<div class="profile-wrapper">
+  <h3>Profile</h3>
+  <div *ngIf="profileKeys.length; else empty">
+    <div *ngFor="let k of profileKeys" class="profile-row">
+      <div class="key">{{k}}:</div>
+      <div class="val">{{profile[k]}}</div>
+    </div>
+  </div>
+  <ng-template #empty>
+    <div class="empty">No profile data yet.</div>
+  </ng-template>
+</div>

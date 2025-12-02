@@ -1,0 +1,17 @@
+<div class="sidebar-wrapper">
+  <div class="sidebar-header">
+    <h2>AI Chats</h2>
+    <button class="new-chat-btn" (click)="createChat()">+ New Chat</button>
+  </div>
+
+  <div class="chat-list">
+    <div
+      class="chat-item"
+      *ngFor="let c of chats"
+      [class.active]="c === activeChatId"
+      (click)="selectChat(c)">
+      <div class="chat-title">Chat {{c.substring(c.length-6)}}</div>
+      <div class="chat-snippet">Last message …</div>
+    </div>
+  </div>
+</div>

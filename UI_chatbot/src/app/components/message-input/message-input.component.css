@@ -1,0 +1,24 @@
+.input-bar {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid #e5e7eb;
+}
+
+textarea {
+    flex: 1;
+    min-height: 44px;
+    resize: none;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+button {
+    background: #06b6d4;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}

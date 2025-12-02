@@ -1,0 +1,7 @@
+<div class="input-bar">
+  <textarea [(ngModel)]="text"
+          placeholder="Type a message..."
+          (keydown.enter)="onEnter($event)">
+</textarea>
+  <button (click)="send()" [disabled]="!text.trim()">Send</button>
+</div>

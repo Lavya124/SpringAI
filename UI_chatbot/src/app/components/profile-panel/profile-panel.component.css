@@ -1,0 +1,24 @@
+.profile-wrapper {
+    padding: 16px;
+}
+
+.profile-row {
+    display: flex;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.key {
+    font-weight: 600;
+    color: #374151;
+    width: 120px;
+}
+
+.val {
+    color: #111827;
+}
+
+.empty {
+    color: #6b7280;
+}

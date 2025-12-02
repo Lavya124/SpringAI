@@ -1,0 +1,7 @@
+<div class="chat-window">
+  <div class="messages" #scrollArea>
+    <div *ngFor="let m of messages" [ngClass]="{'msg-row':true, 'user': m.sender === 'user', 'bot': m.sender === 'bot'}">
+      <div class="bubble">{{ m.text }}</div>
+    </div>
+  </div>
+</div>
